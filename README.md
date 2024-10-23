@@ -24,32 +24,35 @@ The project focuses on the admission process for prospective students interested
 ## Installation
 
 1. Clone the repository:
-   git clone https://github.com/yourusername/EduConsultPro-CRM.git
+   git clone https://github.com/Maryala-Harshitha58/A-CRM-Application-to-Manage-the-Services-offered-by-an-Institution.git
    
 Navigate to the project directory:
-
+---------------------------------
 cd EduConsultPro-CRM
 Set up Salesforce DX:
-
 Ensure you have Salesforce CLI installed.
-Authenticate to your Salesforce Org:
 
+Authenticate to your Salesforce Org:
+------------------------------------
 sfdx force:auth:web:login -a MyOrgAlias
 
 Push the metadata to your Salesforce Org:
 sfdx project deploy start --manifest force-app/main/default/package.xml --target-org MyOrgAlias
 
 Contribution
+------------
 Contributions are welcome! Please feel free to submit a pull request or open an issue for any feature requests or bug reports.
 
 License
+-------
 This project is licensed under the MIT License. See the LICENSE file for more information.
 
 Contact
+--------
 For questions or inquiries, please reach out to:
-
-M.Harshitha-maryalaharshitha@gmail.com
-- `https://github.com/Maryala-Harshitha58/A-CRM-Application-to-Manage-the-Services-offered-by-an-Institution.git`.
+M.Harshitha
+maryalaharshitha@gmail.com
+https://github.com/Maryala-Harshitha58/A-CRM-Application-to-Manage-the-Services-offered-by-an-Institution.git
 
 
 
