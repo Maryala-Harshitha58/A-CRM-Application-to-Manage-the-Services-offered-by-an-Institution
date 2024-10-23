@@ -50,8 +50,11 @@ This project is licensed under the MIT License. See the LICENSE file for more in
 Contact
 --------
 For questions or inquiries, please reach out to:
+<br>
 M.Harshitha
+<br>
 maryalaharshitha@gmail.com
+<br>
 https://github.com/Maryala-Harshitha58/A-CRM-Application-to-Manage-the-Services-offered-by-an-Institution.git
 
 
