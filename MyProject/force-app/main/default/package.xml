@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>Submission_Template</members>
+        <members>Approval_Template</members>
+        <members>Rejection_Template</members>
+        <name>EmailTemplate</name>
+    </types>
+    <types>
+        <members>Appointment_Approval</members>
+        <name>ApprovalProcess</name>
+    </types>
+    <version>61.0</version>
+</Package>

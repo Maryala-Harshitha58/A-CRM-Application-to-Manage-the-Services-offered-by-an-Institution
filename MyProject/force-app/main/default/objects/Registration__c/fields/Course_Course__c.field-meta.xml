@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Course_Course__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Course - Course</label>
+    <referenceTo>Course_Course__c</referenceTo>
+    <relationshipLabel>Registrations</relationshipLabel>
+    <relationshipName>Registrations</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

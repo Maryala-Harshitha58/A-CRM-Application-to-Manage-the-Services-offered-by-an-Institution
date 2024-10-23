@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Approval process for appointments</description>
+    <entryCriteria>
+        <field>Appointment__c.Status</field>
+        <operation>equals</operation>
+        <value>Pending</value>
+    </entryCriteria>
+    <finalApprovalActions>
+        <fieldUpdate>
+            <field>Appointment__c.Status</field>
+            <value>Approved</value>
+        </fieldUpdate>
+        <emailAlert>
+            <name>Approval Email Alert</name>
+        </emailAlert>
+    </finalApprovalActions>
+    <initialSubmissionActions>
+        <fieldUpdate>
+            <field>Appointment__c.Status</field>
+            <value>Submitted</value>
+        </fieldUpdate>
+        <emailAlert>
+            <name>Submission Email Alert</name>
+        </emailAlert>
+    </initialSubmissionActions>
+    <name>Appointment Approval</name>
+    <processType>Standard</processType>
+    <recordEditability>AdminsOnly</recordEditability>
+</ApprovalProcess>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<HomePage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>EduConsultPro Home Page</label>
+    <template>Standard</template>
+    <region>
+        <componentInstance>
+            <componentName>lightning:flow</componentName>
+            <attributes>
+                <attribute name="flowName" value="EduConsultantPro_Flow"/>
+            </attributes>
+        </componentInstance>
+    </region>
+</HomePage>

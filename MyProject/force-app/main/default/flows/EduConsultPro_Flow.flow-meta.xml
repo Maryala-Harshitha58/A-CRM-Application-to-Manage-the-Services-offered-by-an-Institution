@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <choices>
+        <name>No</name>
+        <choiceText>No</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>No</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Yes</name>
+        <choiceText>Yes</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Yes</stringValue>
+        </value>
+    </choices>
+    <decisions>
+        <name>Decision_1</name>
+        <label>Decision 1</label>
+        <locationX>314</locationX>
+        <locationY>350</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>If_Existing_Student</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Are_you_an_Existing_Student</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Yes</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Existing_Student_Flow</targetReference>
+            </connector>
+            <label>If Existing Student</label>
+        </rules>
+        <rules>
+            <name>If_New_Student</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Are_you_an_Existing_Student</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>No</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>New_Student_Flow</targetReference>
+            </connector>
+            <label>If Not an Existing Student</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>EduConsultPro Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>EduConsultPro Flow</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <screens>
+        <name>Existing_or_New_Student_Confirmation_Screen</name>
+        <label>Existing or New Student Confirmation Screen</label>
+        <locationX>314</locationX>
+        <locationY>242</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Decision_1</targetReference>
+        </connector>
+        <fields>
+            <name>Are_you_an_Existing_Student</name>
+            <choiceReferences>Yes</choiceReferences>
+            <choiceReferences>No</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Are you an Existing Student?</fieldText>
+            <fieldType>RadioButtons</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Welcome_Screen</name>
+        <label>Welcome Screen</label>
+        <locationX>314</locationX>
+        <locationY>134</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Existing_or_New_Student_Confirmation_Screen</targetReference>
+        </connector>
+        <fields>
+            <name>SuccessMessage</name>
+            <fieldText>&lt;p&gt;Welcome to EduConsultantPro&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;your premier destination for education and immigration solutions!&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;At EduConsultantPro, we understand that embarking on educational or immigration journeys can be both exhilarating and daunting. That&apos;s why we&apos;re here to guide you every step of the way with expertise, dedication, and personalized support.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Whether you&apos;re seeking to pursue your academic dreams abroad, navigate the complexities of immigration processes, or enhance your professional skills through international opportunities, EduConsultantPro is your trusted partner.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Our team of seasoned consultants is committed to understanding your unique aspirations and crafting tailored strategies to help you achieve your goals efficiently and effectively. From selecting the right educational institution to navigating visa procedures, our comprehensive services cover all aspects of your journey.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;At EduConsultantPro, we believe in fostering inclusive communities and unlocking the full potential of every individual. With our unwavering commitment to excellence and integrity, we strive to make your experience with us seamless and rewarding.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Welcome to EduConsultantPro – where your aspirations meet our expertise, and together, we pave the path to success. Let&apos;s embark on this transformative journey together!&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>188</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Welcome_Screen</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <subflows>
+        <name>Existing_Student_Flow</name>
+        <label>Existing Student Flow</label>
+        <locationX>50</locationX>
+        <locationY>458</locationY>
+        <flowName>EduConsultPro_Student_Flow</flowName>
+    </subflows>
+    <subflows>
+        <name>New_Student_Flow</name>
+        <label>New Student Flow</label>
+        <locationX>314</locationX>
+        <locationY>458</locationY>
+        <flowName>EduConsultPro_Student_Flow</flowName>
+    </subflows>
+</Flow>

@@ -1,0 +1,569 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Send_Email_to_Student</name>
+        <label>Send Email to Student</label>
+        <locationX>609</locationX>
+        <locationY>1030</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <connector>
+            <targetReference>Success_Screen</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>StudentRecordRes.Email__c</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <elementReference>StuRegistrationEmailTextTempSub</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>StuRegistrationEmailTextTempBody</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <apiVersion>62.0</apiVersion>
+    <choices>
+        <name>Duoolingo</name>
+        <choiceText>Duoolingo</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Duoolingo</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>GMAT</name>
+        <choiceText>GMAT</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>GMAT</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>GRE</name>
+        <choiceText>GRE</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>GRE</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>IELTS</name>
+        <choiceText>{IELTS}</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>{IELTS}</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>TOEFL</name>
+        <choiceText>TOEFL</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>TOEFL</stringValue>
+        </value>
+    </choices>
+    <decisions>
+        <name>Selecting_Course</name>
+        <label>Selecting Course</label>
+        <locationX>563</locationX>
+        <locationY>550</locationY>
+        <defaultConnector>
+            <targetReference>Send_Email_to_Student</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Selected_IELTS</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Select_Course</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>IELTS</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_IELTS_Rec</targetReference>
+            </connector>
+            <label>Selected IELTS</label>
+        </rules>
+        <rules>
+            <name>Selected_GRE</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Select_Course</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>GRE</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_GRE_Rec</targetReference>
+            </connector>
+            <label>Selected GRE</label>
+        </rules>
+        <rules>
+            <name>Selected_GMAT</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Select_Course</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>GMAT</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_GMAT_Rec</targetReference>
+            </connector>
+            <label>Selected GMAT</label>
+        </rules>
+        <rules>
+            <name>Selected_DuoLingo</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Select_Course</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Duoolingo</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_DuoLingo_Rec</targetReference>
+            </connector>
+            <label>Selected DuoLingo</label>
+        </rules>
+        <rules>
+            <name>Selected_TOEFL</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Select_Course</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>TOEFL</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_TOEFL_Rec</targetReference>
+            </connector>
+            <label>Selected TOEFL</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>EduConsultPro Student Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>EduConsultPro Student Flow</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordCreates>
+        <name>Create_DuoLingo_Registration_Rec</name>
+        <label>Create DuoLingo Registration Rec</label>
+        <locationX>145</locationX>
+        <locationY>864</locationY>
+        <connector>
+            <targetReference>Send_Email_to_Student</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Course_Course__c</field>
+            <value>
+                <elementReference>Get_DuoLingo_Rec.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Student_Student__c</field>
+            <value>
+                <elementReference>Get_DuoLingo_Rec.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Registration__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_GMAT_Registration_Rec</name>
+        <label>Create GMAT Registration Rec</label>
+        <locationX>885</locationX>
+        <locationY>797</locationY>
+        <connector>
+            <targetReference>Send_Email_to_Student</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Course_Course__c</field>
+            <value>
+                <elementReference>Get_GMAT_Rec.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Student_Student__c</field>
+            <value>
+                <elementReference>Get_GMAT_Rec.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Registration__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_GRE_Registration_Rec</name>
+        <label>Create GRE Registration Rec</label>
+        <locationX>50</locationX>
+        <locationY>953</locationY>
+        <connector>
+            <targetReference>Send_Email_to_Student</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Course_Course__c</field>
+            <value>
+                <elementReference>Get_GRE_Rec.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Student_Student__c</field>
+            <value>
+                <elementReference>Get_GRE_Rec.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Registration__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_IELTS_Registration_Rec</name>
+        <label>Create IELTS Registration Rec</label>
+        <locationX>1053</locationX>
+        <locationY>845</locationY>
+        <connector>
+            <targetReference>Send_Email_to_Student</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Course_Course__c</field>
+            <value>
+                <elementReference>Get_IELTS_Rec.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Student_Student__c</field>
+            <value>
+                <elementReference>Get_IELTS_Rec.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Registration__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_Student_Record</name>
+        <label>Create Student Record</label>
+        <locationX>603</locationX>
+        <locationY>296</locationY>
+        <connector>
+            <targetReference>Course_Screen</targetReference>
+        </connector>
+        <inputReference>StudentRecordRes</inputReference>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_TOEFL_Registration_Rec</name>
+        <label>Create TOEFL Registration Rec</label>
+        <locationX>367</locationX>
+        <locationY>810</locationY>
+        <connector>
+            <targetReference>Send_Email_to_Student</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Course_Course__c</field>
+            <value>
+                <elementReference>Get_TOEFL_Rec.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Student_Student__c</field>
+            <value>
+                <elementReference>Get_TOEFL_Rec.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Registration__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordLookups>
+        <name>Get_DuoLingo_Rec</name>
+        <label>Get DuoLingo Rec</label>
+        <locationX>357</locationX>
+        <locationY>683</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Create_DuoLingo_Registration_Rec</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Selected_DuoLingo</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Course_Course__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_GMAT_Rec</name>
+        <label>Get GMAT Rec</label>
+        <locationX>711</locationX>
+        <locationY>687</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Create_GMAT_Registration_Rec</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Selected_GMAT</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Course_Course__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_GRE_Rec</name>
+        <label>Get GRE Rec</label>
+        <locationX>170</locationX>
+        <locationY>644</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Create_GRE_Registration_Rec</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Selected_GRE</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Course_Course__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_IELTS_Rec</name>
+        <label>Get IELTS Rec</label>
+        <locationX>897</locationX>
+        <locationY>652</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Create_IELTS_Registration_Rec</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Selected_IELTS</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Course_Course__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_TOEFL_Rec</name>
+        <label>Get TOEFL Rec</label>
+        <locationX>518</locationX>
+        <locationY>712</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Create_TOEFL_Registration_Rec</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Selected_TOEFL</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Course_Course__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <screens>
+        <name>Course_Screen</name>
+        <label>Course Screen</label>
+        <locationX>612</locationX>
+        <locationY>436</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Selecting_Course</targetReference>
+        </connector>
+        <fields>
+            <name>Select_Course</name>
+            <choiceReferences>IELTS</choiceReferences>
+            <choiceReferences>GRE</choiceReferences>
+            <choiceReferences>GMAT</choiceReferences>
+            <choiceReferences>Duoolingo</choiceReferences>
+            <choiceReferences>TOEFL</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Select Course</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Student_Info</name>
+        <label>Student Info</label>
+        <locationX>603</locationX>
+        <locationY>177</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Create_Student_Record</targetReference>
+        </connector>
+        <fields>
+            <fieldType>ObjectProvided</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+            <objectFieldReference>StudentRecordRes.City__c</objectFieldReference>
+        </fields>
+        <fields>
+            <fieldType>ObjectProvided</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+            <objectFieldReference>StudentRecordRes.Date_of_Birth__c</objectFieldReference>
+        </fields>
+        <fields>
+            <fieldType>ObjectProvided</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+            <objectFieldReference>StudentRecordRes.Address__c</objectFieldReference>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Success_Screen</name>
+        <label>Success Screen</label>
+        <locationX>603</locationX>
+        <locationY>1195</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>SuccessMessage</name>
+            <fieldText>&lt;p style=&quot;text-align: justify;&quot;&gt;Dear {!StudentRecordRes.Name},&lt;/p&gt;&lt;p style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: justify;&quot;&gt;Congratulations and welcome to EduConsultantPro!&lt;/p&gt;&lt;p style=&quot;text-align: justify;&quot;&gt;We are delighted to inform you that your registration on our platform has been successfully completed. You are now part of our esteemed community dedicated to empowering students like you to achieve their educational and immigration aspirations.&lt;/p&gt;&lt;p style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: justify;&quot;&gt;Your Registration details have been sent through mail kindly check it once.&lt;/p&gt;&lt;p style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: justify;&quot;&gt;Thank you.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>475</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Student_Info</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>StuRegistrationEmailTextTempBody</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Dear {!StudentRecordRes.Name},
+
+
+Congratulations and welcome to EduConsultantPro!
+
+
+We are delighted to inform you that your registration on our platform has been successfully completed. You are now part of our esteemed community dedicated to empowering students like you to achieve their educational and immigration aspirations.
+
+
+At EduConsultantPro, we understand the importance of your academic and career goals, and we are committed to providing you with the highest level of support and guidance throughout your journey.
+
+Here are a few key points to help you get started:
+
+Explore Our Resources : Take some time to explore the wide range of resources, tools, and services available on the EduConsultantPro platform. From educational insights to immigration advice, we offer comprehensive support tailored to your needs.
+
+Connect with Our Consultants : Our team of experienced consultants is here to assist you at every stage of your educational and immigration endeavors. Don&apos;t hesitate to reach out to us with any questions, concerns, or inquiries you may have. We&apos;re here to help!
+
+Stay Updated : Keep an eye on your inbox for important updates, announcements, and exclusive opportunities from EduConsultantPro. We&apos;ll ensure that you&apos;re informed about the latest developments and relevant information to support your journey.
+
+Engage with the Community : Join our vibrant community of students, professionals, and experts who share your passion for education and global opportunities. Connect with like-minded individuals, participate in discussions, and expand your network.
+
+
+Once again, congratulations on taking this important step towards realizing your academic and career aspirations. We are thrilled to have you as part of the EduConsultantPro family and look forward to supporting you on your journey to success.
+
+If you have any questions or need assistance, please don&apos;t hesitate to contact us.
+
+
+Thank you.</text>
+    </textTemplates>
+    <textTemplates>
+        <name>StuRegistrationEmailTextTempSub</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Dear {!StudentRecordRes.Name},
+
+
+Congratulations and welcome to EduConsultantPro!
+
+
+We are delighted to inform you that your registration on our platform has been successfully completed. You are now part of our esteemed community dedicated to empowering students like you to achieve their educational and immigration aspirations.
+
+
+At EduConsultantPro, we understand the importance of your academic and career goals, and we are committed to providing you with the highest level of support and guidance throughout your journey.
+
+Here are a few key points to help you get started:
+
+Explore Our Resources : Take some time to explore the wide range of resources, tools, and services available on the EduConsultantPro platform. From educational insights to immigration advice, we offer comprehensive support tailored to your needs.
+
+Connect with Our Consultants : Our team of experienced consultants is here to assist you at every stage of your educational and immigration endeavors. Don&apos;t hesitate to reach out to us with any questions, concerns, or inquiries you may have. We&apos;re here to help!
+
+Stay Updated : Keep an eye on your inbox for important updates, announcements, and exclusive opportunities from EduConsultantPro. We&apos;ll ensure that you&apos;re informed about the latest developments and relevant information to support your journey.
+
+Engage with the Community : Join our vibrant community of students, professionals, and experts who share your passion for education and global opportunities. Connect with like-minded individuals, participate in discussions, and expand your network.
+
+
+Once again, congratulations on taking this important step towards realizing your academic and career aspirations. We are thrilled to have you as part of the EduConsultantPro family and look forward to supporting you on your journey to success.
+
+If you have any questions or need assistance, please don&apos;t hesitate to contact us.
+
+
+Thank you.</text>
+    </textTemplates>
+    <variables>
+        <name>StudentRecordRes</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Student_Student__c</objectType>
+    </variables>
+</Flow>
