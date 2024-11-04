@@ -45,8 +45,7 @@ Contributions are welcome! Please feel free to submit a pull request or open an 
 
 Output:-
 -----------
-![Lightning App-ConsultantPro](https://github.com/user-attachments/assets/c9189228-5cc1-489b-b969-dc9bcb4340da)
-
+![Lightning App-ConsultantPro](https://github.com/user-attachments/assets/8cc7066f-c8a8-43f8-9892-322b9ec763b7)
 
 License
 -------
