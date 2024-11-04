@@ -43,7 +43,7 @@ Contribution
 ------------
 Contributions are welcome! Please feel free to submit a pull request or open an issue for any feature requests or bug reports.
 
-###Output:-
+Output:-
 -----------
 ![Lightning App-ConsultantPro](https://github.com/user-attachments/assets/c9189228-5cc1-489b-b969-dc9bcb4340da)
 
